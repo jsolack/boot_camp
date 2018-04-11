@@ -11,14 +11,30 @@
     <link rel="shortcut icon" href="{{=URL('static','images/favicon.ico')}}" type="image/x-icon">
     <link rel="apple-touch-icon" href="{{=URL('static','images/favicon.png')}}">
     <script src="{{=URL('static','js/modernizr-2.8.3.min.js')}}"></script>
+    <link rel="stylesheet" href="{{=URL('static', 'css/custom.css')}}" >
+    <link rel="stylesheet" href="{{=URL('static', 'css/bulma.css')}}" >
   </head>
   <body>
     <!--[if lt IE 8]><p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p><![endif]-->
-    
+
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="">
+          Bootcamp
+        </a>
+
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+    </nav>
+
     <div id="main">
       {{ include }}
     </div>
-    
+
     <script>
       const GETDATA = '{{=URL("default", "get_data")}}'
     </script>
@@ -32,8 +48,11 @@
     <script src="{{=URL('static','js/vendor/vuex.js')}}"></script>
     <!-- axios -->
     <script src="{{=URL('static','js/vendor/axios.min.js')}}"></script>
+    <!-- echarts.js -->
+    <script src="{{=URL('static','js/vendor/echarts.min.js')}}"></script>
     <!-- app.js -->
     <script src="{{=URL('static','js/app/app.js')}}"></script>
+
 
   </body>
 </html>
