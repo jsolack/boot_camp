@@ -1,0 +1,36 @@
+body {
+    background-color: #233237;
+}
+.navbar {
+    background-color: #18121E;
+}
+
+.header {
+    font-size: 30px;
+    color: #EAC67A;
+}
+
+.card {
+    background-color: #984B43;
+    color: #EAC67A;
+}
+.ct-chart1 {
+    height: 400px;
+    background-color: #233237;
+}
+
+.ct-chart2 {
+    height: 400px;
+    background-color: #233237;
+}
+
+.ct-chart3 {
+    height: 400px;
+    background-color: #233237;
+}
+.ct-grids {
+    color: #EAC67A;
+}
+.ct-labels span {
+    color: #EAC67A;
+}

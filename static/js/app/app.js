@@ -1,43 +1,67 @@
+Vue.options.delimiters
 const app = new Vue({
+    delimiters: ['{!',  '!}'],
   // create your Vue Object
   el: '#main',
   data: {
-    big_diff: {},
-    bar_option: {
-      title: {
-          text: ''
+      run_time: '',
+      selected: [],
+      platforms: [],
+      bar1_data: {
+          labels: [],
+          series: [],
+          chartPadding: 80,
+          labelOffset: 50,
+
       },
-      tooltip: {},
-      legend: {
-          data:['']
+      pie1_data: {
+          labels: [],
+          series: [],
+          chartPadding: 80,
+          labelOffset: 50,
       },
-      xAxis: {
-          data: []
+      bar3_data: {
+          labels: [],
+          series: [],
+          chartPadding: 80,
+          labelOffset: 50,
       },
-      yAxis: {},
-      series: [{
-          name: '',
-          type: 'bar',
-          data: []
-      }]
-    }
-  },
+    },
   mounted: function () {
       // `this` points to the vm instance
-      var myChart = echarts.init(document.getElementById('t1'))
-      this.get_data(myChart)
+      this.get_platform()
+      this.get_data()
   },
   methods: {
-      get_data: function (mc) {
-        axios.get(GETDATA)
+      get_platform: function () {
+          axios.get(GETPLATFORM)
+          .then (response => {
+                this.$data.platforms = response.data
+                this.$data.selected = response.data
+          })
+      },
+      get_data: function () {
+        axios.get(GETDATA, {params: {selected: this.$data.selected}})
           .then(response => {
-            var x = response.data
-            var ops = this.$data.bar_option
-            ops.title.text = 'Games with highest difference from user to critic score'
-            ops.legend.data = ["Score"]
-            ops.series[0].data = response.data.big_diff.data
-            ops.xAxis.data = response.data.big_diff.names
-            mc.setOption(ops)
+            var data = response.data
+            var bar1_data = this.$data.bar1_data
+            bar1_data.labels = data.bar1_data.labels
+            bar1_data.series = []
+            bar1_data.series.push(data.bar1_data.series.map((x) => {return parseFloat(x)}))
+            new Chartist.Bar('.ct-chart1', bar1_data)
+
+            var pie1_data = this.$data.pie1_data
+            pie1_data.labels = data.pie1_data.labels
+            pie1_data.series = []
+            pie1_data.series.push(data.pie1_data.series.map((x) => {return parseFloat(x)}))
+            new Chartist.Line('.ct-chart2', pie1_data)
+
+            var bar3_data = this.$data.bar3_data
+            bar3_data.labels = data.bar3_data.labels
+            bar3_data.series = data.bar3_data.series
+            new Chartist.Line('.ct-chart3', bar3_data)
+
+            this.$data.run_time = data.run_time
           })
         }
     }

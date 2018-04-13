@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
+import numpy as np
 import pandas as pd
 import os
 from gluon.serializers import json
+from datetime import datetime
+from data_importer import pull_data
 
 # -------------------------------------------------------------------------
 # This scaffolding model makes your app work on Google App Engine too

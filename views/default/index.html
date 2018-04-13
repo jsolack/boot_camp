@@ -1,10 +1,80 @@
 {{extend 'layout.html'}}
+
 <div class="columns">
-  <div class="column">
-    First column
-    <div id='t1' style='height: 500px; width: 100%;'></div>
-  </div>
-  <div class="column">
-    Second column
-  </div>
+    <div class="column is-one-quarter">
+        <nav class="panel">
+        <p class="panel-heading">
+            Platform Filters
+        </p>
+        <div class="panel-block">
+            <div class="select is-multiple">
+                <select multiple size="20" v-model='selected' v-on:change="get_data">
+                    <option v-for="platform in platforms" v-bind:value="platform">
+                        {! platform !}
+                    </option>
+                </select>
+            </div>
+        </div>
+        </nav>
+    </div>
+
+    <div class="column">
+        <div class='columns'>
+            <div class="column">
+                <div class="card">
+                    <header class="card-header">
+                        <p class="card-header-title">
+                        Largest Disparity From Critic to User Score
+                        </p>
+                    </header>
+                    <div class="card-content">
+                        <div class="content">
+                            <div class="ct-chart1"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card">
+                    <header class="card-header">
+                        <p class="card-header-title">
+                            Units Sold by Publisher
+                        </p>
+                    </header>
+                    <div class="card-content">
+                        <div class="content">
+                            <div class="ct-chart2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='columns'>
+            <div class="column">
+
+                <div class="card">
+                    <header class="card-header">
+                        <p class="card-header-title">
+                            Sales By Platform Over Time
+                        </p>
+                    </header>
+                    <div class="card-content">
+                        <div class="content">
+                            <div class="ct-chart3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p>
+        <strong>Data Processed in </strong> {!run_time!}
+      </p>
+    </div>
+  </div>
+</footer>
