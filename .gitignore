@@ -1,6 +1,7 @@
 errors/
 sessions/
 databases/
+private/
 *.pyc
 *.swp
 kernel*
