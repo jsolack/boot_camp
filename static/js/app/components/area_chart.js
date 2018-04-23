@@ -1,4 +1,4 @@
-const Chart = Vue.component('Chart', {
+const solackChart = {
 	props: ['data', 'steven', 'agePotValue'],
 	template: `
 	<div>
@@ -64,6 +64,6 @@ const Chart = Vue.component('Chart', {
     	}
 			this.chart = new Highcharts.chart(highchartsOptions)
 	}
-});
+};
 
-export default Chart
+export default solackChart

@@ -7,9 +7,9 @@
 	<input type="number" min="56" v-model.number="retireAge" >{% retireAge %}
   <br>
 
-  <Chart :data="data" :steven="steven" :age-pot-value="agePotValue"></Chart>
+  <solack-chart :data="data" :steven="steven" :age-pot-value="agePotValue"></solack-chart>
 
-
+<script type="text/babel" data-presets="es2015,stage-2" data-plugins="transform-es2015-modules-umd" src="{{=URL('static','js/app/components/area_chart.js')}}"></script>
 <!-- <div class="columns">
     <div class="column is-one-quarter">
         <nav class="panel">

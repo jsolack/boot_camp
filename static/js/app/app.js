@@ -1,4 +1,4 @@
-import Chart from './components/area_chart.js'
+import solackChart from './components/area_chart.js'
 
 Vue.use(VueHighcharts)
 Vue.options.delimiters = ['{%', '%}']
@@ -6,7 +6,7 @@ Vue.options.delimiters = ['{%', '%}']
 
 new Vue({
     el: '#main',
-	components: { 'Chart': Chart },
+	components: { 'solack-chart': solackChart },
 	data: {
 		age: 55,
 		currentPensionValue: 22000,
