@@ -34,7 +34,7 @@ def get_data():
     platforms = np.unique([x[1] for x in data.index]).tolist()
     chart_data = [
                     {
-                        'name': p,
+                        'label': p,
                         'data': [None if p not in data[y] else data[y][p] for y in years]
                     }
                      for p in platforms]
