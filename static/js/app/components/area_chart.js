@@ -1,6 +1,5 @@
 const Chart = Vue.component('Chart', {
-    props: ['data', 'steven', 'agePotValue'],
-    name: 'Chart',
+	props: ['data', 'steven', 'agePotValue'],
 	template: `
 	<div>
 		<p>{{ data }}</p>
@@ -51,19 +50,19 @@ const Chart = Vue.component('Chart', {
 				},
 				labels: {
 					formatter: function () {
-				    return '$' + this.value / 1000 + 'k';
+				    return '£' + this.value / 1000 + 'k';
 				  }
 				},
 				opposite: true,
 			},
 			plotOptions: {},
 			series: [{
-                name: '',
-                data: this.agePotValue
-            }],
+    		name: '',
+    		data: this.agePotValue
+  		}],
 			credits: false
     	}
-        this.chart = new Highcharts.chart(highchartsOptions)
+			this.chart = new Highcharts.chart(highchartsOptions)
 	}
 });
 

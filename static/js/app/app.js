@@ -5,7 +5,8 @@ Vue.options.delimiters = ['{%', '%}']
 
 
 new Vue({
-	el: '#main',
+    el: '#main',
+	components: { 'Chart': Chart },
 	data: {
 		age: 55,
 		currentPensionValue: 22000,
@@ -20,8 +21,7 @@ new Vue({
 
             return agePotValue;
         }
-	},
-	components: { Chart }
+	}
 })
 // const app = new Vue({
 //   // create your Vue Object
