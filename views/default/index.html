@@ -1,6 +1,16 @@
 {{extend 'layout.html'}}
 
-<div class="columns">
+  <input type="number" min="55" v-model.number="age" >{% age %}
+  <br>
+  <input type="number" min="1" max="1000000" v-model.number="currentPensionValue">{% currentPensionValue %}
+  <br>
+	<input type="number" min="56" v-model.number="retireAge" >{% retireAge %}
+  <br>
+
+  <Chart :data="data" :steven="steven" :age-pot-value="agePotValue"></Chart>
+
+
+<!-- <div class="columns">
     <div class="column is-one-quarter">
         <nav class="panel">
         <p class="panel-heading">
@@ -77,4 +87,4 @@
       </p>
     </div>
   </div>
-</footer>
+</footer> -->
