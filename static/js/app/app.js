@@ -1,4 +1,4 @@
-import bar_base from './components/chart_base.js'
+import chart_base from './components/chart_base.js'
 import bar_chart from './components/bar_chart.js'
 
 Vue.use(VueHighcharts)
@@ -16,13 +16,14 @@ const app = new Vue({
         x_title: '',
         y_title: '',
         bar1_data: [1,2,3],
-        bar1_options: bar_base,
+        bar1_options: {},
         bar1_render_to: 'chart1'
 	},
     computed: {
     },
     mounted: function () {
         // `this` points to the vm instance
+        this.$data.bar1_options = chart_base.bar_base
         this.get_platform()
         // this.get_data()
     },
