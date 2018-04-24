@@ -1,15 +1,10 @@
 {{extend 'layout.html'}}
 
-  <input type="number" min="55" v-model.number="age" >{% age %}
-  <br>
-  <input type="number" min="1" max="1000000" v-model.number="currentPensionValue">{% currentPensionValue %}
-  <br>
-	<input type="number" min="56" v-model.number="retireAge" >{% retireAge %}
-  <br>
+<bar-chart :options="bar1_options" :render_to="bar1_render_to"></bar-chart>
 
-  <solack-chart :data="data" :steven="steven" :age-pot-value="agePotValue"></solack-chart>
-
-<script type="text/babel" data-presets="es2015,stage-2" data-plugins="transform-es2015-modules-umd" src="{{=URL('static','js/app/components/area_chart.js')}}"></script>
+{{block component_js}}
+<script type="text/babel" data-presets="es2015,stage-2" data-plugins="transform-es2015-modules-umd" src="{{=URL('static','js/app/components/bar_chart.js')}}"></script>
+{{end}}
 <!-- <div class="columns">
     <div class="column is-one-quarter">
         <nav class="panel">
@@ -31,18 +26,6 @@
     <div class="column">
         <div class='columns'>
             <div class="column">
-                <div class="card">
-                    <header class="card-header">
-                        <p class="card-header-title">
-                        Largest Disparity From Critic to User Score
-                        </p>
-                    </header>
-                    <div class="card-content">
-                        <div class="content">
-                            <div class="ct-chart1"></div>
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="column">
                 <div class="card">
