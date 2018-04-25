@@ -49,7 +49,7 @@ const app = new Vue({
             this.$data.chart2_options.series[0].data = data.chart2_data.series.map((x) => {return parseFloat(x)})
             this.$data.chart2_options.xAxis.categories = data.chart2_data.labels
             this.$data.chart2_options.title.text = 'Sales by Developer'
-            this.$data.chart2_options.series[0].name = 'Developer'
+            this.$data.chart2_options.series[0].name = 'Global Sales'
 
             this.$data.chart3_options.chart.type = 'line'
             this.$data.chart3_options.series = data.chart3_data.series

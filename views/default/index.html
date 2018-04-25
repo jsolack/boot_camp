@@ -9,7 +9,7 @@
         </p>
         <div class="panel-block">
             <div class="select is-multiple">
-                <select multiple size="20" v-model='selected' v-on:change="get_data">
+                <select multiple size="18" v-model='selected' v-on:change="get_data" class='multi-select'>
                     <option v-for="platform in platforms" v-bind:value="platform">
                         {% platform %}
                     </option>

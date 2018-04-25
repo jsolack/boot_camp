@@ -36,7 +36,7 @@ def get_data():
     chart_data = [
                     {
                         'name': p,
-                        'data': [None if p not in data[y] else data[y][p] for y in years]
+                        'data': [None if p not in data[y] else data[y][p] * 1000000 for y in years]
                     }
                      for p in platforms]
     output['chart3_data'] = {}

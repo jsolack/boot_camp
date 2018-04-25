@@ -14,7 +14,14 @@ const chart = {
 	},
 	methods:{
 		redraw(){
-			this.high_chart.update(this.options)
+			const the_len = this.high_chart.series.length
+			for (var i = 0; i < the_len; i++) {
+				this.high_chart.series[0].remove()
+			}
+			for (const v of this.options.series) {
+				this.high_chart.addSeries(v, false)
+			}
+			this.high_chart.update(this.options, false)
 			this.high_chart.redraw()
 		}
 	},
