@@ -1,5 +1,5 @@
 import chart_base from './components/chart_base.js'
-import bar_chart from './components/bar_chart.js'
+import chart from './components/chart.js'
 
 Vue.use(VueHighcharts)
 Vue.options.delimiters = ['{%', '%}']
@@ -7,25 +7,24 @@ Vue.options.delimiters = ['{%', '%}']
 
 const app = new Vue({
     el: '#main',
-	components: { 'bar-chart': bar_chart },
+	components: { 'chart': chart },
 	data: {
         run_time: '',
         selected: [],
         platforms: [],
-        title: '',
-        x_title: '',
-        y_title: '',
-        bar1_data: [1,2,3],
-        bar1_options: {},
-        bar1_render_to: 'chart1'
+        chart1_options: _.cloneDeep(chart_base),
+        chart1_render_to: 'chart1',
+        chart2_options: _.cloneDeep(chart_base),
+        chart2_render_to: 'chart2',
+        chart3_options: _.cloneDeep(chart_base),
+        chart3_render_to: 'chart3'
 	},
     computed: {
     },
     mounted: function () {
         // `this` points to the vm instance
-        this.$data.bar1_options = chart_base.bar_base
         this.get_platform()
-        // this.get_data()
+        this.get_data()
     },
     methods: {
         get_platform: function () {
@@ -39,24 +38,25 @@ const app = new Vue({
         axios.get(GETDATA, {params: {selected: this.$data.selected}})
           .then(response => {
             var data = response.data
-            // var bar1_data = this.$data.bar1_data
-            // bar1_data.labels = data.bar1_data.labels
-            // bar1_data.series = []
-            // bar1_data.series.push(data.bar1_data.series.map((x) => {return parseFloat(x)}))
-            // new Chartist.Bar('.ct-chart1', bar1_data)
+            // chart1 updates
+            this.$data.chart1_options.chart.type = 'column'
+            this.$data.chart1_options.series[0].data = data.chart1_data.series.map((x) => {return parseFloat(x)})
+            this.$data.chart1_options.xAxis.categories = data.chart1_data.labels
+            this.$data.chart1_options.title.text = 'User Score to Critic Score Disparity'
+            this.$data.chart1_options.series[0].name = 'Game'
 
-            // var pie1_data = this.$data.pie1_data
-            // pie1_data.labels = data.pie1_data.labels
-            // pie1_data.series = []
-            // pie1_data.series.push(data.pie1_data.series.map((x) => {return parseFloat(x)}))
-            // new Chartist.Line('.ct-chart2', pie1_data)
+            this.$data.chart2_options.chart.type = 'column'
+            this.$data.chart2_options.series[0].data = data.chart2_data.series.map((x) => {return parseFloat(x)})
+            this.$data.chart2_options.xAxis.categories = data.chart2_data.labels
+            this.$data.chart2_options.title.text = 'Sales by Developer'
+            this.$data.chart2_options.series[0].name = 'Developer'
 
-            // var bar3_data = this.$data.bar3_data
-            // bar3_data.labels = data.bar3_data.labels
-            // bar3_data.series = data.bar3_data.series
-            // new Chartist.Line('.ct-chart3', bar3_data)
+            this.$data.chart3_options.chart.type = 'line'
+            this.$data.chart3_options.series = data.chart3_data.series
+            this.$data.chart3_options.xAxis.categories = data.chart3_data.labels
+            this.$data.chart3_options.title.text = 'Sales by Years'
 
-            // this.$data.run_time = data.run_time
+            this.$data.run_time = data.run_time
           })
         }
     }
