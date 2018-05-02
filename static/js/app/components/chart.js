@@ -37,7 +37,7 @@ const chart = {
 		this.options.chart.renderTo = this.render_to
 		this.high_chart = new Highcharts.chart(this.options)
 	}
-};
+}
 
 
 export default chart
