@@ -39,6 +39,7 @@
     </script>
     <!-- babel -->
     <script src="{{=URL('static','js/vendor/babel.min.js')}}"></script>
+    <script src="{{=URL('static','js/vendor/babel-polyfill.min.js')}}"></script>
     <!-- vue -->
     <script src="{{=URL('static','js/vendor/vue.js')}}"></script>
     <!-- vuex -->
@@ -49,10 +50,13 @@
     <script src="{{=URL('static','js/vendor/lodash.js')}}"></script>
     <!-- axios -->
     <script src="{{=URL('static','js/vendor/axios.min.js')}}"></script>
-    <!-- charting -->
-    <script src="{{=URL('static','js/vendor/Chart.bundle.min.js')}}"></script>
+    <!-- highcharts.js -->
+    <script src="{{=URL('static','js/vendor/highcharts.js')}}"></script>
+    <script src="{{=URL('static','js/vendor/vue-highcharts.min.js')}}"></script>
+     {{block component_js}}{{end component_js}}
     <!-- app.js -->
-    <script src="{{=URL('static','js/app/app.js')}}"></script>
+    <script type="text/babel" data-presets="es2015,stage-2" data-plugins="transform-es2015-modules-umd" src="{{=URL('static','js/app/app.js')}}"></script>
+
 
 
   </body>
